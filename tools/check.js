@@ -26,7 +26,9 @@ const server = http.createServer((req, res) => {
   await new Promise(r => server.listen(0, r));
   const base = `http://localhost:${server.address().port}/`;
   const axePath = require.resolve('axe-core/axe.min.js');
-  const browser = await chromium.launch();
+  // Playwright's own Chromium if installed, else the system Edge or Chrome
+  const browser = await chromium.launch().catch(() => chromium.launch({ channel: 'msedge' }))
+    .catch(() => chromium.launch({ channel: 'chrome' }));
   let failed = 0;
   for (const [w, h, tag] of [[1440, 900, 'desktop'], [390, 844, 'phone']]) {
     for (const page of PAGES) {

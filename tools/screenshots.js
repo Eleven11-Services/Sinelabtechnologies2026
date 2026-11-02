@@ -19,7 +19,9 @@ const server = http.createServer((req, res) => {
 (async () => {
   fs.mkdirSync(OUT, { recursive: true });
   await new Promise(r => server.listen(0, r)); const base = `http://localhost:${server.address().port}/`;
-  const browser = await chromium.launch();
+  // Playwright's own Chromium if installed, else the system Edge or Chrome
+  const browser = await chromium.launch().catch(() => chromium.launch({ channel: 'msedge' }))
+    .catch(() => chromium.launch({ channel: 'chrome' }));
   for (const [w, h, tag] of [[1440, 900, 'desktop'], [390, 844, 'phone']]) {
     for (const page of PAGES) {
       const pg = await browser.newPage({ viewport: { width: w, height: h }, isMobile: w < 800, hasTouch: w < 800 });
