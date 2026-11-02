@@ -1,0 +1,18 @@
+SINELAB TECHNOLOGIES - FONT
+
+Font family: Inter Tight (free, open source, SIL Open Font License)
+Download:    https://fonts.google.com/specimen/Inter+Tight
+
+Weights used
+Light 300      Main headings
+Regular 400    Body text, subheadings
+Medium 500     Buttons, labels
+SemiBold 600   Key words inside headings
+
+Website sizes
+Main headings  56-84 px   Light, key words SemiBold
+Subheadings    22-26 px   Regular
+Body text      16-18 px   Regular, Text Grey (#5F5F69)
+Labels         12-13 px   Medium, UPPERCASE, wide letter spacing
+
+Fallback in Word / PowerPoint when Inter Tight is not installed: Arial

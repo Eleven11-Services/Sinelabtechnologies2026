@@ -1,0 +1,20 @@
+SINELAB TECHNOLOGIES - BRAND COLOURS
+
+PRIMARY
+Sinelab Black    HEX #09090B   RGB 9, 9, 11        CMYK approx. 0, 0, 0, 96     Headings, dark sections
+White            HEX #FFFFFF   RGB 255, 255, 255   CMYK 0, 0, 0, 0              Backgrounds, text on dark
+Sinelab Yellow   HEX #F9C22E   RGB 249, 194, 46    CMYK approx. 0, 22, 82, 2    Buttons, highlights
+
+SUPPORT
+Dark Gold        HEX #806000   RGB 128, 96, 0      CMYK approx. 0, 25, 100, 50  Icons, accent text on white
+Light Grey       HEX #F4F4F5   RGB 244, 244, 245   CMYK approx. 0, 0, 0, 4      Section backgrounds, cards
+Line Grey        HEX #E4E4E7   RGB 228, 228, 231   CMYK approx. 1, 1, 0, 9      Borders, dividers
+Text Grey        HEX #5F5F69   RGB 95, 95, 105     CMYK approx. 10, 10, 0, 59   Body text, captions
+
+LOGO ONLY (as sampled from the supplied logo)
+Logo Navy        HEX #1A1E4C   RGB 26, 30, 76
+Logo Orange      HEX #FAA32D   RGB 250, 163, 45
+Logo Yellow      HEX #FFC427   RGB 255, 196, 39
+Logo Grey        HEX #8E8FA6   RGB 142, 143, 166
+
+CMYK values are starting points; ask the printer for a proof.
