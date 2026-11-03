@@ -1,6 +1,6 @@
 # History notes (raw working log)
 
-> Copied unchanged from the Cowork sessions (22 Oct – 2 Nov 2026). It is a chronological log, so later entries override earlier ones.
+> Copied unchanged from the Cowork sessions (22 Oct – 3 Nov 2026). It is a chronological log, so later entries override earlier ones.
 > Paths like `/tmp/claude-0/...`, `src_draft.html`, `systems2.py` or "draft v54" refer to the old cloud workspace and review artifact. They do not exist in this repo.
 > The current state is summarised in `HANDOVER.md`, and `site/` is the source of truth.
 
@@ -227,3 +227,26 @@ Changed deploy files: assets/img day, fg_day, fg_dusk, fg_night, stars, panels, 
 
 ## Pending from client
 Drone videos; vector logo; award photo; more real project photos + capacities for the four real projects (Bala 70 vs 170 kW); leadership portraits (4 now: Sajeev, Sunil, Athul, Sravan); gallery photos; addresses + map links; social URLs; approved testimonials; legal review.
+
+## Claude Code handover (2 Nov)
+User: "i want to transfer this to claude code so give me neccessary handover files". Built /tmp/claude-0/handover/sinelab-website (199 files, 36 MB):
+- site/ = current Vercel build (source of truth from now on; Vercel Root Directory = site); assets-source/ (brand pack, real project + team photos, hero sources); docs/HANDOVER.md (state, content facts, assumptions, open items), docs/history-notes.md (this log), docs/reference (client PDFs + WCAG skill), docs/legacy-build (old generators, reference only); tools/check.js (axe WCAG 2.2 AA + console/404/broken-image/external-request check, desktop + phone), tools/screenshots.js, tools/to_webp.py, tools/make_film.py; package.json (serve/check/screenshots), CLAUDE.md (rules + code map), README.md, .claude/skills/wcag-accessibility-expert.
+- All four tools tested; check = "All pages clean".
+- Delivered: /mnt/user-data/outputs/sinelab-website-claude-code.zip (34.5 MB) and the unzipped folder Downloads\sinelab-website-claude-code on the user's PC (.claude folder can't be written remotely; CLAUDE.md says to copy docs/reference/WCAG_Accessibility_Expert_Skill.md into .claude/skills if missing).
+- Found while documenting (listed in HANDOVER open items): homepage about.webp + blog1–3 are sample photos without a "Sample photo" label; footer social + Privacy/Terms links point to index.html.
+
+## Live-site check (3 Nov)
+User asked for "the updated link". Checked in the browser pane:
+- sinelab-website.vercel.app: still the OLD homepage-only build (day.jpg, no subpages – about/solutions/… 404). The latest Vercel build was never uploaded to GitHub.
+- sinelabtest.netlify.app: all 6 pages, real projects, films, designations (29 Oct build) but BEFORE the WebP/performance pass and the 2 Nov hero clean-up (day.webp 404).
+- Latest version is only in the draft artifact (https://claude.ai/artifact/9RiaKn4eWfiFizxFp1vVCU, v54).
+- Made /mnt/user-data/outputs/sinelab-website-netlify-latest.zip (111 files, 16.7 MB, = /tmp/claude-0/deploy/sinelab-website minus README.txt; identical to the handover site/ except Netlify Forms instead of FormSubmit; check.js all clean). Also saved to Downloads\sinelab-website-netlify-latest.zip. User drops it on the Netlify project → sinelabtest.netlify.app updates; rollback = Deploys → previous deploy → Publish deploy.
+- User (3 Nov): "you don't have to connect Vercel, just the preview is enough". Vercel is dropped for now; the review link is the draft artifact https://claude.ai/artifact/9RiaKn4eWfiFizxFp1vVCU (last updated 2 Nov = latest). Keep publishing updates there.
+
+## Homepage projects grid (3 Nov, draft v55)
+User comment on #projTrack: "change the layout, avoid the scroll to see projects, show it in one glance, just 3-4 then a CTA to view projects". projects_grid_patch.py (backup src_v61_pre_pgrid.html) replaced the pinned sideways slider with #projGrid:
+- Desktop: Bava Metals large (left, spans 2 rows; real_bava_feat = full 1828x1056 source, object-position 42% 50%), then Grand Bajaj (object-position 50% 25%), Salim, Bala as 16:10 tiles (real_*_tile 1000x625), then a dark "View all 7 projects" card (round photos of Jamal, Palakkad Surgicals, Sinicon = real_*_dot 160px, "+3", yellow arrow) → projects.html. Whole cards clickable (stretched link), card focus ring via :has().
+- Short laptop screens: small photos max-height max(130px, (100svh - 470px)/2), so 1280x720 and 1366x768 show the whole grid in one view.
+- Tablet ≤1023: Bava across the top (16:8), three in a row, "View all" as a full-width bar. Phones ≤700: Bava (4:3), then a compact list (112px thumbs), then the tile.
+- Wipe-in reveal with stagger + sunlight glint (IntersectionObserver); reduced motion shows everything static. Old slider CSS/JS/phone CSS and the Lenis prevent for .proj-track removed. real_*_slide images no longer used (still present in the user's PC handover folder; safe to delete).
+- check.js: all pages clean. Published draft v55; deploy builds, handover site/, CLAUDE.md, HANDOVER.md updated; zips rebuilt.

@@ -103,7 +103,8 @@ docs/legacy-build/     old Python generators (reference only, do not run)
 
 - Everything served is WebP: photos q72 with a longest side of 1920; cards, portraits and thumbs 1200; video posters 1280. Every `<img>` has `decoding="async"`, and below-the-fold images also have `loading="lazy"`. `og.jpg` is 1200×630.
 - Naming:
-  - `real_<key>.webp` (full), `real_<key>_card.webp` (5:4), `real_<key>_slide.webp` (16:10)
+  - `real_<key>.webp` (full), `real_<key>_card.webp` (5:4, Projects page)
+  - homepage Featured projects: `real_bava_feat.webp` (large card), `real_<key>_tile.webp` (16:10, 1000 px), `real_<key>_dot.webp` (160 px circles on the "View all" card)
   - `team_<key>_sq.webp` (square, About page), `team_<key>_tall.webp` (3:4, homepage)
   - `film_<key>.webp` and `film_<key>_t.webp` (clip poster and tab thumb)
 - Project keys: `bava`, `bajaj`, `bala`, `jamal`, `psurg` (Palakkad Surgicals), `sinicon`, `salim`; film keys: `mw1`, `psurg`, `sinicon`.

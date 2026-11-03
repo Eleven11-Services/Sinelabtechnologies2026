@@ -67,7 +67,11 @@ These are real drone photos and are the only projects shown.
 
 - The project data lives in `const PROJECTS = [...]` in `projects.html`, and the case-study dialog is built from it.
 - Capacities stay hidden until the client confirms them. That was the user's choice.
-- Homepage project slider order: Bava, Grand Bajaj, **Salim (3rd)**, Bala, Jamal, Palakkad Surgicals, Sinicon (`/ 07`).
+- **Homepage "Featured projects"** (changed 3 Nov at the user's request: "avoid the scroll to see projects… just 3–4 then a CTA"):
+  - The old pinned sideways slider is gone. The section is now a one-glance grid (`#projGrid`): Bava Metals as the large card, then Grand Bajaj, Salim Hybrid Residence and Bala Cinemas, then a dark "View all 7 projects" card. That card shows round photos of Jamal Sons, Palakkad Surgicals and Sinicon and links to `projects.html`.
+  - Layouts: desktop is one large card plus a 2×2 block; tablet puts the large card on top, three in a row and the "View all" bar below; phones show the large card, then a compact list, then the button.
+  - On short laptop screens the small photos get shallower (`max-height` tied to `100svh`), so all four stay in view.
+  - The order (Salim 3rd) is the user's choice.
 - Homepage "Projects in motion" films are 3 s clips each and auto-advance: **Pyarelal 1 MW rooftop** (`mw1`), **Palakkad Surgicals** (`psurg`), **Sinicon** (`sinicon`). They are slow push-ins rendered from still photos until real drone video arrives (see `tools/make_film.py`).
 - Gallery highlight deck (top of `gallery.html`): Bala, Bajaj, Bava, Salim, Palakkad Surgicals, Sinicon. Salim replaced Jamal there at the user's request. Data is in `const HIGHLIGHTS`; grid data is in `const GALLERY`.
 - The gallery grid has a "Sinelab projects" row of real photos, then a "Sample photos" masonry. Every tile in it is labelled, and a note says they are placeholders.
