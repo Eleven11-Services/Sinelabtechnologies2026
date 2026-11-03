@@ -136,7 +136,7 @@ These are real drone photos and are the only projects shown.
 
 **Site work before launch**
 
-- [ ] Replace or label the remaining sample images on the homepage. `about.webp` in the About intro and the three blog cards (`blog1–3.webp`) are sample photos with no "Sample photo" label. The blog itself is sample content. Either label them, swap in real photos, or hide the blog until real articles exist. Ask the user which.
+- [ ] Replace or label the remaining sample images on the homepage. `about.webp` in the About intro and the three blog cards (`blog1–3.webp`) are sample photos with no "Sample photo" label. The blog itself is sample content. Either label them, swap in real photos, or hide the blog until real articles exist. **3 Nov:** labels were tried and the user undid them; they chose to leave these as they are for now. Don't raise it again until real photos or articles arrive, or before launch.
 - [ ] Add the Privacy and Terms pages, and point the footer links at them (they currently go to `index.html`)
 - [ ] Fill in the social links in the footer (currently `index.html`)
 - [ ] Remove `noindex` on all six pages
