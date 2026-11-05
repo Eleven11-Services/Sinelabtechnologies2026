@@ -1549,10 +1549,10 @@ footer{background:var(--navy-deep);color:var(--on-dark-muted);padding-block:clam
 .sl-proc .eyebrow{color:var(--on-dark-muted)}
 .sl-proc .sec-head h2{color:#fff}
 .sl-proc .sec-head p{color:var(--on-dark-muted)}
-.ps-wrap{position:relative;margin-top:clamp(30px,4vw,60px)}
-.ps-line{position:absolute;left:0;right:0;top:7px;height:2px;background:rgba(255,255,255,.14);border-radius:2px;overflow:hidden}
+.ps-wrap{position:relative;margin-top:clamp(30px,4vw,60px);--ps-gap:clamp(18px,2.4vw,36px)}
+.ps-line{position:absolute;left:8px;right:calc((100% - 4 * var(--ps-gap)) / 5 - 8px);top:7px;height:2px;background:rgba(255,255,255,.14);border-radius:2px;overflow:hidden}
 .ps-line i{position:absolute;inset:0;background:var(--sun);transform-origin:0 50%;transform:scaleX(0)}
-.ps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(18px,2.4vw,36px)}
+.ps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--ps-gap)}
 .ps-step{position:relative}
 .ps-dot{display:block;width:16px;height:16px;border-radius:50%;background:var(--navy-deep);border:2px solid rgba(255,255,255,.35);transition:background .5s,border-color .5s,box-shadow .5s}
 .ps-n{display:block;margin-top:26px;font:500 12px var(--f-mono);letter-spacing:.08em;color:var(--on-dark-muted);transition:color .5s}
@@ -1585,7 +1585,7 @@ footer{background:var(--navy-deep);color:var(--on-dark-muted);padding-block:clam
   .sv-media .sv-scene{position:absolute;inset:0}
   .ps{grid-template-columns:1fr;row-gap:0}
   .ps-wrap{padding-left:34px}
-  .ps-line{display:block;left:7px;right:auto;top:8px;bottom:8px;width:2px;height:auto}
+  .ps-line{display:block;left:7px;right:auto;top:12px;bottom:auto;width:2px;height:var(--ps-len,0px)}
   .ps-line i{transform-origin:50% 0;transform:scaleY(0)}
   .ps-step{padding-bottom:34px}
   .ps-step:last-child{padding-bottom:0}
@@ -2161,13 +2161,17 @@ if (hasGsap && !reduce){
 (function(){
   const wrap = document.getElementById('psWrap'), fill = document.getElementById('psFill'); if (!wrap || !fill) return;
   const steps = [...wrap.querySelectorAll('.ps-step')];
-  if (reduce){ steps.forEach(s => s.classList.add('on')); return; }
+  // phones: the vertical line runs from the first dot to the last one
+  const setLen = () => { const d = wrap.querySelectorAll('.ps-dot'), len = d[d.length - 1].getBoundingClientRect().top - d[0].getBoundingClientRect().top;
+    wrap.style.setProperty('--ps-len', len.toFixed(1) + 'px'); return len; };
+  if (reduce){ steps.forEach(s => s.classList.add('on')); setLen(); addEventListener('resize', setLen); return; }
   let queued = false;
   const update = () => {
     queued = false;
     const r = wrap.getBoundingClientRect(), vert = innerWidth <= 900;
     const start = innerHeight * .85, end = innerHeight * (vert ? .35 : .45);
-    const p = vert ? Math.min(1, Math.max(0, (innerHeight * .6 - r.top) / r.height))
+    const len = vert ? setLen() : 0;
+    const p = vert ? Math.min(1, Math.max(0, (innerHeight * .6 - r.top - 12) / Math.max(1, len)))
                    : Math.min(1, Math.max(0, (start - r.top) / (start - end)));
     fill.style.transform = vert ? 'scaleY(' + p.toFixed(4) + ')' : 'scaleX(' + p.toFixed(4) + ')';
     steps.forEach((s, i) => {
