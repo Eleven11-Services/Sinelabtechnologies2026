@@ -258,7 +258,7 @@ User: "give me the brand design system of this website". Made from the Design Sy
 - Assets uploaded: 5 logos, 14 icons (Dark Gold SVGs), 9 project photos, brand guidelines PDF. Cover: Sine(300)lab(600) + rooftop panel grid with a diagonal of lit cells, sun disc, paper tile.
 - Flagged: brand PDF still says tagline "Powering Tomorrow."; site uses "Powering Your Tomorrow".
 
-## Font switch to Manrope (5 Nov, draft v56, AWAITING APPROVAL)
+## Font switch to Manrope (5 Nov, draft v56, approved by the user 5 Nov)
 User asked why Inter Tight (is the logo Inter?). Honest answer: the logo font was never supplied; Inter Tight was my closest-match pick. Tested the wordmark against 11 fonts (canvas overlay, bbox-normalised IoU): Manrope 0.887 (Sine at 300, lab at 500, tight tracking) vs Inter Tight 0.74, others ≤0.62. The overlay is near-exact, so the logo is almost certainly set in Manrope. DM Sans (user's suggestion) scored 0.56 and has no tabular figures.
 - Switched the whole site to Manrope (OFL; has tabular figures and ₹): Google Fonts link + --f-display/--f-body/--f-mono in src_draft.html, all *_src.html and the inlined preview pages; deploy2.py self-hosts /tmp/claude-0/fonts/manrope (latin + latin-ext 300–700). Backups in /tmp/claude-0/backup_pre_manrope/.
 - Checked: no overflow or clipping on any page at 1440, 1024 or 390; nav pill 724px wide (fits from 901px); some headings and FAQ questions wrap one line more (e.g. film title "Powering Progress. At Scale." now 2 lines); check.js all clean.
