@@ -2195,11 +2195,11 @@ if (hasThree){
     // camera: a slow orbit across the whole scroll, fitted to the stage
     const r = stage.getBoundingClientRect(), asp = r.width / Math.max(1, r.height), tf = .2493;
     const tAz = mob ? .26 + .22 * sys.p : .3 + .5 * sys.p, tEl = mob ? .6 : .48 - .06 * sys.p;
-    const tR = Math.max((mob ? 5.4 : 6.9) / (tf * asp), (mob ? 3.9 : 4.6) / tf);
+    const tR = Math.max((mob ? 7.0 : 6.9) / (tf * asp), (mob ? 3.9 : 4.6) / tf);
     if (!cam.init) Object.assign(cam, { az:tAz, el:tEl, r:tR, init:true });
     const e = 1 - Math.exp(-dt * 5);
     cam.az += (tAz - cam.az) * e; cam.el += (tEl - cam.el) * e; cam.r += (tR - cam.r) * e;
-    const tx = mob ? 1.4 : 1.1, ty = mob ? 1.15 : 1.45, tz = -.15;
+    const tx = mob ? 1.0 : 1.1, ty = mob ? 3.0 : 1.45, tz = -.15;
     camera.position.set(tx + cam.r * Math.cos(cam.el) * Math.sin(cam.az), ty + cam.r * Math.sin(cam.el), tz + cam.r * Math.cos(cam.el) * Math.cos(cam.az));
     camera.lookAt(tx, ty, tz);
     S.renderer.render(scene, camera);
@@ -2218,8 +2218,9 @@ if (hasThree){
     if (!swapAt) tag.style.opacity = hidden || (sys.p < .003 && !reduce) ? 0 : 1;
     tmp.copy(anchors[T[0]]).project(camera);
     let x = (tmp.x + 1) / 2 * r.width; const y = (1 - tmp.y) / 2 * r.height;
-    const flip = x + tag.offsetWidth > r.width - 8; tag.classList.toggle('flip', flip);
-    if (flip) x = Math.max(4, x - tag.offsetWidth);
+    const pad = mob ? 16 : 4;   // phones: keep the label 16px clear of the screen edge
+    const flip = x + tag.offsetWidth > r.width - Math.max(8, pad); tag.classList.toggle('flip', flip);
+    x = flip ? Math.max(pad, x - tag.offsetWidth) : Math.max(pad, x);
     tag.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
   })();
 }
