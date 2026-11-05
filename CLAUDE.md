@@ -147,6 +147,13 @@ Before you report back after any change, run `npm run check`. Then take screensh
   - keep the existing MX records when changing DNS
   - do a test submission of each form
 
+## Hostinger (alternative to Vercel)
+
+-  does the job of  on Hostinger (Apache/LiteSpeed): file types, gzip/brotli, 7-day caching for assets and media, no-cache for pages, security headers, and clean URLs ( serves ). Every block is inside . Keep both files in step when headers change.
+- Build the upload zip from inside  with , the six pages, ,  and  at the zip root (no ). The user extracts it in hPanel → File Manager → .
+- HTTPS: use hPanel's Force HTTPS switch after the SSL certificate is active, not a rewrite rule.
+- Not tested on a local Apache (the winget Apache download failed its hash check). Check the live response headers after the first upload.
+
 ## Open items
 
 Open items are listed in `docs/HANDOVER.md` → "Open items". Do not invent anything that is still pending: capacities, quotes, testimonials, addresses, opening hours or awards.
