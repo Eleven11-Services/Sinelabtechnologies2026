@@ -143,7 +143,6 @@ Before you report back after any change, run `npm run check`. Then take screensh
 - **At launch, on the real domain:**
   - remove `<meta name="robots" content="noindex, nofollow">` (and the comment above it) from all six pages
   - add the Privacy Policy and Terms pages; the footer links currently point to `index.html`
-  - fill in the social URLs in the footer, which also point to `index.html` for now
   - keep the existing MX records when changing DNS
   - do a test submission of each form
 
@@ -153,6 +152,10 @@ Before you report back after any change, run `npm run check`. Then take screensh
 - Build the upload zip from inside `site/` with `.htaccess`, the six pages, `favicon.png`, `assets` and `media` at the zip root (no `vercel.json`). The user extracts it in hPanel → File Manager → `public_html`.
 - HTTPS: use hPanel's Force HTTPS switch after the SSL certificate is active, not a rewrite rule.
 - Not tested on a local Apache (the winget Apache download failed its hash check). Check the live response headers after the first upload.
+
+## Social links
+
+The footer's Contact column links Instagram (https://www.instagram.com/sinelabtechnologies/) and Facebook (https://www.facebook.com/profile.php?id=100066290121773) on all six pages, opening in a new tab. Sinelab has no other social accounts (no LinkedIn).
 
 ## Open items
 

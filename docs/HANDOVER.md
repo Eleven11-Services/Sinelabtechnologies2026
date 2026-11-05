@@ -140,7 +140,7 @@ These are real drone photos and are the only projects shown.
 - [ ] More real gallery photos: manufacturing (battery assembly, inverter testing, lighting production, Kanjikode facility), people (crew, commissioning, engineers) and milestones
 - [ ] Approved testimonials (the `#reviews` section stays hidden until then)
 - [ ] Each leader approves or rewrites their quote
-- [ ] Office hours and social media URLs
+- [ ] Office hours (social links done 5 Nov: Instagram and Facebook only)
 - [ ] Privacy Policy and Terms text (the content doc has drafting briefs; needs legal review)
 
 **Site work before launch**
@@ -148,7 +148,7 @@ These are real drone photos and are the only projects shown.
 - [x] Clean-up: unused `inter-tight-*.woff2` and `real_*_slide.webp` removed (done 3–5 Nov).
 - [ ] Replace or label the remaining sample images on the homepage. `about.webp` in the About intro and the three blog cards (`blog1–3.webp`) are sample photos with no "Sample photo" label. The blog itself is sample content. Either label them, swap in real photos, or hide the blog until real articles exist. Ask the user which.
 - [ ] Add the Privacy and Terms pages, and point the footer links at them (they currently go to `index.html`)
-- [ ] Fill in the social links in the footer (currently `index.html`)
+- [x] Social links in the footer: Instagram and Facebook (5 Nov); LinkedIn removed
 - [ ] Remove `noindex` on all six pages
 - [ ] FormSubmit activation, plus a test submission from both forms
 - [ ] Decide on a visible pause control for auto-advancing carousels and floating icons (WCAG 2.2.2)
