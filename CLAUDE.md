@@ -149,9 +149,15 @@ Before you report back after any change, run `npm run check`. Then take screensh
 ## Hostinger (alternative to Vercel)
 
 - `site/.htaccess` does the job of `vercel.json` on Hostinger (Apache/LiteSpeed): file types, gzip/brotli, 7-day caching for assets and media, no-cache for pages, security headers, and clean URLs (`/about` serves `about.html`). Every block is inside `<IfModule>`. Keep both files in step when headers change.
-- Build the upload zip from inside `site/` with `.htaccess`, the six pages, `favicon.png`, `assets` and `media` at the zip root (no `vercel.json`). The user extracts it in hPanel → File Manager → `public_html`.
+- Build the upload zip from inside `site/` with `.htaccess`, the six pages, `favicon.png`, `assets` and `media` at the zip root (no `vercel.json`, no `_headers`). The user extracts it in hPanel → File Manager → `public_html`.
 - HTTPS: use hPanel's Force HTTPS switch after the SSL certificate is active, not a rewrite rule.
 - Not tested on a local Apache (the winget Apache download failed its hash check). Check the live response headers after the first upload.
+
+## Netlify (review site sinelabtest.netlify.app)
+
+- `site/_headers` carries the same caching and security headers for Netlify. Netlify serves `/about` as `about.html` by itself.
+- Upload zip: `_headers`, the six pages, `favicon.png`, `assets`, `media` at the root (no `.htaccess`, no `vercel.json`). The user drags it onto the project in Netlify (Deploys tab). Rollback: Deploys → an older deploy → Publish deploy.
+- Forms post to FormSubmit, as everywhere else; the old Netlify Forms setup is no longer used.
 
 ## Social links
 
