@@ -149,8 +149,8 @@ Before you report back after any change, run `npm run check`. Then take screensh
 
 ## Hostinger (alternative to Vercel)
 
--  does the job of  on Hostinger (Apache/LiteSpeed): file types, gzip/brotli, 7-day caching for assets and media, no-cache for pages, security headers, and clean URLs ( serves ). Every block is inside . Keep both files in step when headers change.
-- Build the upload zip from inside  with , the six pages, ,  and  at the zip root (no ). The user extracts it in hPanel → File Manager → .
+- `site/.htaccess` does the job of `vercel.json` on Hostinger (Apache/LiteSpeed): file types, gzip/brotli, 7-day caching for assets and media, no-cache for pages, security headers, and clean URLs (`/about` serves `about.html`). Every block is inside `<IfModule>`. Keep both files in step when headers change.
+- Build the upload zip from inside `site/` with `.htaccess`, the six pages, `favicon.png`, `assets` and `media` at the zip root (no `vercel.json`). The user extracts it in hPanel → File Manager → `public_html`.
 - HTTPS: use hPanel's Force HTTPS switch after the SSL certificate is active, not a rewrite rule.
 - Not tested on a local Apache (the winget Apache download failed its hash check). Check the live response headers after the first upload.
 
