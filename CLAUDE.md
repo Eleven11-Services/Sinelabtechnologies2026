@@ -108,6 +108,7 @@ docs/legacy-build/     old Python generators (reference only, do not run)
   - `team_<key>_sq.webp` (square, About page), `team_<key>_tall.webp` (3:4, homepage)
   - `film_<key>.webp` and `film_<key>_t.webp` (clip poster and tab thumb)
 - Project keys: `bava`, `bajaj`, `bala`, `jamal`, `psurg` (Palakkad Surgicals), `sinicon`, `salim`; film keys: `mw1`, `psurg`, `sinicon`.
+- On the user's Windows PC run the Python tools with `py` (Python 3.12 + Pillow); `python3` there is only the Microsoft Store shortcut. ffmpeg is installed too.
 - Convert new photos with `python3 tools/to_webp.py <src> -o site/assets/img/<name>.webp [--max 1200] [--crop 5:4] [--focus 0.5,0.4]` (needs Pillow). Put the original in `assets-source/`.
 - For a homepage clip from a still photo, run `python3 tools/make_film.py <photo> <key> --focus x,y --zoom 1.12 --seconds 3` (needs ffmpeg). The docstring explains how to cut a real drone video instead.
 
