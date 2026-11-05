@@ -7,7 +7,7 @@ sys.path.insert(0, '/tmp/claude-0/site'); from webp_cache import webp   # every 
 from PIL import Image
 d = '/tmp/claude-0/site/'
 OUT = '/tmp/claude-0/deploy/sinelab-website/'
-F = '/tmp/claude-0/fonts/inter-tight/package/'
+F = '/tmp/claude-0/fonts/manrope/'
 L = '/tmp/claude-0/libs/'
 shutil.rmtree(OUT, ignore_errors=True)
 for sub in ['assets/img', 'assets/fonts', 'assets/js', 'media']:
@@ -31,15 +31,15 @@ RANGES = {
 faces = []
 for w in (300, 400, 500, 600, 700):
     for sub, rng in RANGES.items():
-        fn = f'inter-tight-{sub}-{w}-normal.woff2'
-        shutil.copy(F + 'files/' + fn, OUT + 'assets/fonts/' + fn)
-        faces.append(f"@font-face{{font-family:'Inter Tight';font-style:normal;font-display:swap;font-weight:{w};src:url(assets/fonts/{fn}) format('woff2');unicode-range:{rng}}}")
-FONT_HEAD = ('<link rel="preload" href="assets/fonts/inter-tight-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
-             '<link rel="preload" href="assets/fonts/inter-tight-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
+        fn = f'manrope-{sub}-{w}-normal.woff2'
+        shutil.copy(F + fn, OUT + 'assets/fonts/' + fn)
+        faces.append(f"@font-face{{font-family:'Manrope';font-style:normal;font-display:swap;font-weight:{w};src:url(assets/fonts/{fn}) format('woff2');unicode-range:{rng}}}")
+FONT_HEAD = ('<link rel="preload" href="assets/fonts/manrope-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
+             '<link rel="preload" href="assets/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
              '<style>' + ''.join(faces) + '</style>')
 OLD_FONTS = '''<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap">'''
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap">'''
 DEFAULT_DESC = 'Sinelab Technologies is a Kerala-rooted engineering and manufacturing company delivering solar, energy storage and lighting solutions for homes, businesses and industries.'
 
 def rp(s, a, b, label):
@@ -145,7 +145,7 @@ open(OUT + 'README.txt', 'w').write('''SINELAB TECHNOLOGIES WEBSITE (review buil
 Pages: index.html (home), about.html, solutions.html, projects.html, gallery.html, contact.html
 assets/img    images (sample photos until Sinelab's own arrive)
 assets/js     animation libraries (GSAP, ScrollTrigger, Three.js, Lenis)
-assets/fonts  Inter Tight
+assets/fonts  Manrope
 media         project films (sample footage)
 _headers      Netlify caching and security headers
 

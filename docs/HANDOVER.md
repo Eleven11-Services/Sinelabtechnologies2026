@@ -113,6 +113,10 @@ These are real drone photos and are the only projects shown.
   - the alpha layers were rebuilt with sky holes inside the crowns and edge-colour decontamination, so there is no pale halo at dusk or night
 
   The sources are `assets-source/hero/`, and the scripts are in `docs/legacy-build/hero/` for reference. AI outpainting (LaMa) was tried and rejected because it smeared.
+- **Typeface: Manrope (5 Nov).** No brand font was ever supplied, and the site first used Inter Tight as a close match. The user then asked whether the logo was Inter, so the wordmark was tested against 11 fonts by overlaying the shapes.
+  - Manrope matched almost exactly (light "Sine", medium "lab", tight tracking), so the logo is very likely set in Manrope. Inter Tight was next. DM Sans was weaker and has no tabular figures.
+  - The whole site now uses Manrope, which has tabular figures and the ₹ sign.
+  - The brand guidelines PDF in `docs/reference` still says Inter Tight. Update it at its next revision, and confirm the font with Sinelab's logo designer if possible.
 - **Forms:** FormSubmit on Vercel, which needs the one-time activation click; Netlify Forms on the older Netlify build.
 - **Team photos** were cropped with face detection to square (About) and 3:4 (homepage). Founder photos use `object-position:50% 12%` on phones so heads aren't cut off.
 
@@ -140,7 +144,8 @@ These are real drone photos and are the only projects shown.
 
 **Site work before launch**
 
-- [ ] Replace or label the remaining sample images on the homepage. `about.webp` in the About intro and the three blog cards (`blog1–3.webp`) are sample photos with no "Sample photo" label. The blog itself is sample content. Either label them, swap in real photos, or hide the blog until real articles exist. **3 Nov:** labels were tried and the user undid them; they chose to leave these as they are for now. Don't raise it again until real photos or articles arrive, or before launch.
+- [ ] Clean-up, in the copy saved to the PC only: delete the unused files `site/assets/fonts/inter-tight-*.woff2` (replaced by Manrope) and `site/assets/img/real_*_slide.webp` (replaced by the projects grid images). Nothing references them. The zip copy is already clean.
+- [ ] Replace or label the remaining sample images on the homepage. `about.webp` in the About intro and the three blog cards (`blog1–3.webp`) are sample photos with no "Sample photo" label. The blog itself is sample content. Either label them, swap in real photos, or hide the blog until real articles exist. Ask the user which.
 - [ ] Add the Privacy and Terms pages, and point the footer links at them (they currently go to `index.html`)
 - [ ] Fill in the social links in the footer (currently `index.html`)
 - [ ] Remove `noindex` on all six pages

@@ -1,6 +1,6 @@
 # History notes (raw working log)
 
-> Copied unchanged from the Cowork sessions (22 Oct – 3 Nov 2026). It is a chronological log, so later entries override earlier ones.
+> Copied unchanged from the Cowork sessions (22 Oct – 5 Nov 2026). It is a chronological log, so later entries override earlier ones.
 > Paths like `/tmp/claude-0/...`, `src_draft.html`, `systems2.py` or "draft v54" refer to the old cloud workspace and review artifact. They do not exist in this repo.
 > The current state is summarised in `HANDOVER.md`, and `site/` is the source of truth.
 
@@ -250,3 +250,16 @@ User comment on #projTrack: "change the layout, avoid the scroll to see projects
 - Tablet ≤1023: Bava across the top (16:8), three in a row, "View all" as a full-width bar. Phones ≤700: Bava (4:3), then a compact list (112px thumbs), then the tile.
 - Wipe-in reveal with stagger + sunlight glint (IntersectionObserver); reduced motion shows everything static. Old slider CSS/JS/phone CSS and the Lenis prevent for .proj-track removed. real_*_slide images no longer used (still present in the user's PC handover folder; safe to delete).
 - check.js: all pages clean. Published draft v55; deploy builds, handover site/, CLAUDE.md, HANDOVER.md updated; zips rebuilt.
+
+## Design system (3 Nov)
+User: "give me the brand design system of this website". Made from the Design System artifact type: https://claude.ai/artifact/FrUK97GBoiJxafei1TmxCE ("Sinelab Design System", private until shared). Local source: scratchpad/ds/project (README brand book, tokens.json, components/bundle.css + 10 components with previews and guidelines, cover, asset group READMEs, 5 Inter Tight latin woff2).
+- Tokens: 22 colours (site :root names kept: ink, card, paper, line, muted, slate, sun, amber→sun, accent-ink, navy/navy-deep→ink, on-dark, on-dark-muted, line-dark, surface-dark + field-line, placeholder, danger set, whatsapp), 15 type styles (Display/Headings/Text, desktop max of each clamp), 14 spacing, 8 radii (6/10/12/14/16/18/24/999), 5 shadows incl. focus halos, easing, duration, breakpoints, z-index. One theme ("Site"); dark bands use the on-dark tokens. Every value checked against site CSS; contrast ratios in each usage note.
+- Components (static previews, site class names): Button, TextLink, SectionHead, NavBar, WhatsAppButton, ProjectCard, ViewAllCard, FAQItem, FormField, PhotoLabel. Not included: solutions index + isometric drawings, hero day/night scene, 3D model, savings calculator, team cards, gallery viewer, footer, mobile menu panel (described in NavBar).
+- Assets uploaded: 5 logos, 14 icons (Dark Gold SVGs), 9 project photos, brand guidelines PDF. Cover: Sine(300)lab(600) + rooftop panel grid with a diagonal of lit cells, sun disc, paper tile.
+- Flagged: brand PDF still says tagline "Powering Tomorrow."; site uses "Powering Your Tomorrow".
+
+## Font switch to Manrope (5 Nov, draft v56, AWAITING APPROVAL)
+User asked why Inter Tight (is the logo Inter?). Honest answer: the logo font was never supplied; Inter Tight was my closest-match pick. Tested the wordmark against 11 fonts (canvas overlay, bbox-normalised IoU): Manrope 0.887 (Sine at 300, lab at 500, tight tracking) vs Inter Tight 0.74, others ≤0.62. The overlay is near-exact, so the logo is almost certainly set in Manrope. DM Sans (user's suggestion) scored 0.56 and has no tabular figures.
+- Switched the whole site to Manrope (OFL; has tabular figures and ₹): Google Fonts link + --f-display/--f-body/--f-mono in src_draft.html, all *_src.html and the inlined preview pages; deploy2.py self-hosts /tmp/claude-0/fonts/manrope (latin + latin-ext 300–700). Backups in /tmp/claude-0/backup_pre_manrope/.
+- Checked: no overflow or clipping on any page at 1440, 1024 or 390; nav pill 724px wide (fits from 901px); some headings and FAQ questions wrap one line more (e.g. film title "Powering Progress. At Scale." now 2 lines); check.js all clean.
+- NOT yet synced (wait for approval): Claude Code handover folder and zip, Netlify/Vercel zips, design system (tokens type family, fonts/, README), brand guidelines PDF. Revert = artifact v55 or restore the backups.

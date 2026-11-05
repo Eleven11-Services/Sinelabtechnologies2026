@@ -16,7 +16,7 @@ The full history of decisions is in `docs/HANDOVER.md`. Read it before you make 
    - Capacities are hidden until the client confirms them.
 5. **Brand.**
    - Colours are black, white and Sinelab yellow `#F9C22E`. Yellow is never used as text on white; use `--accent-ink #806000` instead.
-   - The only typeface is **Inter Tight**, self-hosted.
+   - The only typeface is **Manrope**, self-hosted. It is the typeface of the Sinelab wordmark: light "Sine", medium "lab", tight letter spacing. The switch from Inter Tight was made on 5 Nov 2026.
    - The site should feel premium and engineered, with subtle motion. The user dislikes anything that looks AI-made, childish or busy, so avoid heavy effects, gradients-for-show and emoji.
 6. The user reviews visually and section by section. Make one change at a time, then show a screenshot of it.
 
@@ -28,7 +28,7 @@ site/                  the deployable website (Vercel "Root Directory" = site)
   about.html  solutions.html  projects.html  gallery.html  contact.html
   assets/img/          all images (WebP, plus og.jpg and apple-touch-icon.png)
   assets/js/           gsap 3.12.5, ScrollTrigger, lenis 1.1.13, three r128 (self-hosted, no CDNs)
-  assets/fonts/        Inter Tight woff2 (300–700, latin + latin-ext)
+  assets/fonts/        Manrope woff2 (300–700, latin + latin-ext)
   media/               homepage "Projects in motion" clips (.mp4 + .webm)
   vercel.json          cache + security headers
   favicon.png
@@ -71,7 +71,7 @@ docs/legacy-build/     old Python generators (reference only, do not run)
 ```
 --sun:#F9C22E  --accent-ink:#806000  --ink:#09090B  --navy-deep:#09090B  --slate:#66666E
 --paper:#F4F4F5  --muted:#5F5F69  --line:#E4E4E7  --on-dark-muted:#A1A1AA
---f-display / --f-body / --f-mono: all Inter Tight
+--f-display / --f-body / --f-mono: all "Manrope", "Helvetica Neue", Arial, sans-serif
 ```
 
 ### Motion conventions
@@ -122,8 +122,7 @@ docs/legacy-build/     old Python generators (reference only, do not run)
 
 ```
 npm install                      # playwright + axe-core (dev only)
-npx playwright install chromium  # optional: check/screenshots fall back to the system Edge or Chrome
-                                 # (on the user's PC this download hangs while unpacking, so Edge is used)
+npx playwright install chromium  # once
 npm run serve                    # http://localhost:8000 (python3 http.server on site/)
 npm run check                    # all pages × desktop/phone: console errors, 404s, broken images,
                                  # unexpected external requests, axe WCAG 2.2 AA. Must end "All pages clean".
