@@ -123,7 +123,7 @@ docs/legacy-build/     old Python generators (reference only, do not run)
 ```
 npm install                      # playwright + axe-core (dev only)
 npx playwright install chromium  # once
-npm run serve                    # http://localhost:8000 (python3 http.server on site/)
+npm run serve                    # http://localhost:8000 (tools/serve.js, plain Node)
 npm run check                    # all pages × desktop/phone: console errors, 404s, broken images,
                                  # unexpected external requests, axe WCAG 2.2 AA. Must end "All pages clean".
 node tools/check.js about.html   # one page

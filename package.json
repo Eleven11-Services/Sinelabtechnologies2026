@@ -3,7 +3,7 @@
   "private": true,
   "description": "Sinelab Technologies website (static HTML/CSS/JS in site/) plus check and screenshot tools",
   "scripts": {
-    "serve": "python3 -m http.server 8000 --directory site",
+    "serve": "node tools/serve.js",
     "check": "node tools/check.js",
     "screenshots": "node tools/screenshots.js"
   },
